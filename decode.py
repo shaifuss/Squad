@@ -1,5 +1,4 @@
 import json
-import bag_of_words
 
 
 def unpack():

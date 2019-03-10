@@ -2,7 +2,7 @@ import decode
 import bag_of_words
 
 
-MAX_PARAGRAPHS = 1000
+MAX_PARAGRAPHS = 100
 MAX_QS = 1
 
 

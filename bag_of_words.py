@@ -13,8 +13,8 @@ def tokenize(paragraphs):
         w = nltk.word_tokenize(paragraph)
         words.extend(w)
     words = set(words)  # remove duplicates, stopwords, and punctuation
-    clean_words = [w.lower() for w in words if w not in nltk.corpus.stopwords.words('english') and w.isalpha()]
-    return sorted(clean_words)
+    vocab = [w.lower() for w in words if w not in nltk.corpus.stopwords.words('english') and w.isalpha()]
+    return vocab
 
 
 def generate(paragraphs, questions):
@@ -26,10 +26,10 @@ def generate(paragraphs, questions):
     """
     paragraphs.extend(questions)
     vocab = tokenize(paragraphs)
-    mat = np.zeros(len(paragraphs), len(vocab))
+    mat = np.zeros([len(vocab), len(paragraphs)], dtype=int)
     for index, paragraph in enumerate(paragraphs):
         words = nltk.word_tokenize(paragraph)
-        bag_vector = np.zeros(len(vocab))
+        bag_vector = np.zeros(len(vocab), dtype=int)
         for w in words:
             for i, word in enumerate(vocab):
                 if word == w:
