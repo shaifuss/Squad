@@ -24,7 +24,7 @@ def tokenize(paragraphs):
 
 def generate(paragraphs, questions):
     """
-    generates overall vocabulary and builds wordcount vectors for each paragraph and the question
+    generates overall vocabulary and builds bag of words vectors for each paragraph and the question
     :param paragraphs: strings
     :param questions: strings
     :return: matrix of word count vectors (one per sentence), answer is last column
@@ -33,6 +33,7 @@ def generate(paragraphs, questions):
     paragraphs.extend(questions)
     vocab = tokenize(paragraphs)
     mat = np.zeros([len(vocab), len(paragraphs)], dtype=int)
+    # build vectors for each paragraph
     for index, paragraph in enumerate(paragraphs):
         words = nltk.word_tokenize(paragraph)
         bag_vector = np.zeros(len(vocab), dtype=int)

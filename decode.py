@@ -8,7 +8,7 @@ def unpack(filename):
     :return: list of paragraphs, list of questions
     """
     #
-    with open('C:\\Users\\Harriet\\PycharmProjects\\Squad\\dev-v2.0.json') as jfile:
+    with open(filename) as jfile:
         dataset = json.load(jfile)
         context = []
         qas = []
@@ -16,10 +16,10 @@ def unpack(filename):
             for paragraph in article['paragraphs']:          # for each paragraph in given article
                 context.append(paragraph['context'])
                 qas.append(paragraph['qas'])
-        # separate each question
+        # separate each question from block of questions
         q_list = []
-        for qa in qas:
-            for q in qa:
+        for qa in qas:  # for each block
+            for q in qa:    # for each question
                 q_list.append(q['question'])
 
     return context, q_list
