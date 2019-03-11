@@ -11,7 +11,7 @@ import sys
 import bag_of_words as bow
 
 
-MAX_PARAGRAPHS = 5
+MAX_PARAGRAPHS = 100
 
 if __name__ == '__main__':
     if len(sys.argv) != 2 or sys.argv[1] != 'dev-v2.0.json':
